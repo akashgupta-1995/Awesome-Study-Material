@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30-Day Senior Career Accelerator — DevOps & AI Engineer 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap');
+
+  :root {
+    --bg: #0a0b0f;
+    --surface: #111318;
+    --surface2: #181b24;
+    --border: #1e2130;
+    --devops: #00d4aa;
+    --devops-dim: rgba(0,212,170,0.12);
+    --devops-glow: rgba(0,212,170,0.25);
+    --ai: #a78bfa;
+    --ai-dim: rgba(167,139,250,0.12);
+    --ai-glow: rgba(167,139,250,0.25);
+    --accent: #f59e0b;
+    --text: #e8eaf0;
+    --text-muted: #6b7280;
+    --text-dim: #9ca3af;
+    --week1: #3b82f6;
+    --week2: #06b6d4;
+    --week3: #10b981;
+    --week4: #f59e0b;
+    --yt: #ff4444;
+    --doc: #60a5fa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    background: radial-gradient(ellipse 80% 60% at 20% 40%, rgba(0,212,170,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 50% at 80% 60%, rgba(167,139,250,0.07) 0%, transparent 60%),
+                var(--bg);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 7vw, 88px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    margin-bottom: 8px;
+  }
+
+  .hero-title .line1 { color: var(--devops); }
+  .hero-title .line2 { color: var(--text); }
+  .hero-title .line3 { color: var(--ai); }
+
+  .hero-sub {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--text-dim);
+    margin: 20px 0 40px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .tab-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,11,15,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+  }
+
+  .tab-btn {
+    padding: 18px 40px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-bottom: 3px solid transparent;
+    transition: all 0.25s;
+  }
+
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.devops.active { color: var(--devops); border-bottom-color: var(--devops); }
+  .tab-btn.ai.active { color: var(--ai); border-bottom-color: var(--ai); }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+
+  .role-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  @media (max-width: 700px) {
+    .role-header { grid-template-columns: 1fr; }
+    .tab-btn { padding: 14px 20px; font-size: 11px; }
+    .questions-grid { grid-template-columns: 1fr; }
+    .days-grid { grid-template-columns: 1fr; }
+    .check-grid { grid-template-columns: 1fr; }
+  }
+
+  .role-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .role-card.highlight-devops { border-color: var(--devops); background: var(--devops-dim); }
+  .role-card.highlight-ai { border-color: var(--ai); background: var(--ai-dim); }
+
+  .role-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .role-card .big-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .role-card p { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 60px;
+  }
+
+  .skill-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s;
+  }
+
+  .skill-pill:hover { transform: translateY(-2px); }
+  .skill-pill-name { font-size: 13px; font-weight: 500; color: var(--text); }
+  .skill-pill-level { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+
+  .skill-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .skill-bar-fill { height: 100%; border-radius: 2px; transition: width 1s ease; }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .week-block {
+    margin-bottom: 48px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .week-header {
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .week-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.2;
+    min-width: 60px;
+  }
+
+  .week-info { flex: 1; }
+
+  .week-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    opacity: 0.6;
+  }
+
+  .week-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .week-focus { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  .week-tag {
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .week-body { padding: 0 32px 32px; }
+
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .day-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .day-card:hover { border-color: #2d3148; }
+
+  .day-num { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+
+  .day-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .day-tasks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .day-tasks li {
+    font-size: 12px;
+    color: var(--text-dim);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .day-tasks li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    opacity: 0.4;
+    font-size: 10px;
+    top: 1px;
+  }
+
+  /* ===== RESOURCES SECTION ===== */
+  .day-resources {
+    margin-top: 16px;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .res-group-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+
+  .res-links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .res-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    text-decoration: none;
+    font-size: 11px;
+    line-height: 1.4;
+    padding: 5px 8px;
+    border-radius: 6px;
+    transition: background 0.15s;
+    color: var(--text-dim);
+    border: 1px solid transparent;
+  }
+
+  .res-link:hover { background: var(--surface2); border-color: var(--border); }
+
+  .res-link.yt {
+    color: #fca5a5;
+  }
+
+  .res-link.yt:hover { background: rgba(255,68,68,0.08); border-color: rgba(255,68,68,0.2); }
+
+  .res-link.doc {
+    color: #93c5fd;
+  }
+
+  .res-link.doc:hover { background: rgba(96,165,250,0.08); border-color: rgba(96,165,250,0.2); }
+
+  .res-link.free {
+    color: #6ee7b7;
+  }
+
+  .res-link.free:hover { background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.2); }
+
+  .res-icon {
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .res-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0;
+  }
+
+  /* ===== END RESOURCES ===== */
+
+  .timeline {
+    display: flex;
+    margin-bottom: 60px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .timeline-week {
+    flex: 1;
+    padding: 20px 16px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .timeline-week:last-child { border-right: none; }
+
+  .tl-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; display: block; }
+  .tl-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); display: block; margin-top: 2px; }
+  .tl-theme { font-size: 12px; color: var(--text-dim); margin-top: 8px; display: block; }
+
+  .salary-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 60px;
+  }
+
+  .salary-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .salary-label { font-size: 12px; min-width: 160px; color: var(--text-dim); }
+  .salary-bar-wrap { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .salary-bar-fill { height: 100%; border-radius: 4px; }
+  .salary-val { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; min-width: 100px; text-align: right; }
+
+  .tools-section { margin-top: 60px; }
+
+  .tools-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .tool-cat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+  }
+
+  .tool-cat-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tool-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+  .tool-list li { font-size: 13px; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+
+  .tool-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  .interview-section { margin-top: 60px; }
+
+  .questions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .question-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .q-category { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; opacity: 0.5; }
+  .q-text { font-size: 13px; line-height: 1.6; color: var(--text-dim); }
+
+  .checklist {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-top: 60px;
+  }
+
+  .checklist-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .check-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+  .check-box {
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .check-box.checked { background: var(--devops); border-color: var(--devops); }
+  .check-box.checked::after { content: '✓'; font-size: 11px; color: #000; font-weight: 700; }
+  .check-box.checked-ai { background: var(--ai); border-color: var(--ai); }
+  .check-box.checked-ai::after { content: '✓'; font-size: 11px; color: #000; font-weight: 700; }
+
+  .highlight-box {
+    border-left: 3px solid;
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    background: var(--surface);
+    margin: 24px 0;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-dim);
+  }
+
+  .highlight-box.devops-box { border-color: var(--devops); }
+  .highlight-box.ai-box { border-color: var(--ai); }
+
+  .emphasis { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--text); }
+
+  .w1 { color: var(--week1); } .w2 { color: var(--week2); } .w3 { color: var(--week3); } .w4 { color: var(--week4); }
+  .bg-w1 { background: var(--week1); } .bg-w2 { background: var(--week2); } .bg-w3 { background: var(--week3); } .bg-w4 { background: var(--week4); }
+  .tag-w1 { background: rgba(59,130,246,0.15); color: var(--week1); }
+  .tag-w2 { background: rgba(6,182,212,0.15); color: var(--week2); }
+  .tag-w3 { background: rgba(16,185,129,0.15); color: var(--week3); }
+  .tag-w4 { background: rgba(245,158,11,0.15); color: var(--week4); }
+
+  .week-block.w1-block { border-color: rgba(59,130,246,0.2); }
+  .week-block.w1-block .week-header { background: rgba(59,130,246,0.05); }
+  .week-block.w2-block { border-color: rgba(6,182,212,0.2); }
+  .week-block.w2-block .week-header { background: rgba(6,182,212,0.05); }
+  .week-block.w3-block { border-color: rgba(16,185,129,0.2); }
+  .week-block.w3-block .week-header { background: rgba(16,185,129,0.05); }
+  .week-block.w4-block { border-color: rgba(245,158,11,0.2); }
+  .week-block.w4-block .week-header { background: rgba(245,158,11,0.05); }
+
+  .devops-accent { color: var(--devops); }
+  .ai-accent { color: var(--ai); }
+
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 40px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Legend bar */
+  .res-legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin-bottom: 32px;
+    font-size: 11px;
+  }
+
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="badge">2026 Career Accelerator · 9 Years Experience</div>
+  <h1 class="hero-title">
+    <span class="line1">Senior DevOps</span><br>
+    <span class="line2">&</span><br>
+    <span class="line3">AI Engineer</span>
+  </h1>
+  <p class="hero-sub">A precision-engineered 30-day pathway — with free resources for every single topic</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num devops-accent">30</span><span class="stat-label">Days Total</span></div>
+    <div class="stat"><span class="stat-num ai-accent">2</span><span class="stat-label">Target Roles</span></div>
+    <div class="stat"><span class="stat-num" style="color:var(--accent)">4</span><span class="stat-label">Phases</span></div>
+    <div class="stat"><span class="stat-num" style="color:#f472b6">3-4h</span><span class="stat-label">Daily Study</span></div>
+  </div>
+</section>
+
+<nav class="tab-nav">
+  <button class="tab-btn devops active" onclick="switchTab('devops', this)">⬡ Senior DevOps</button>
+  <button class="tab-btn ai" onclick="switchTab('ai', this)">◈ AI Engineer</button>
+</nav>
+
+<!-- ============================= DEVOPS PANEL ============================= -->
+<div id="panel-devops" class="panel active">
+  <div class="section">
+
+    <div class="role-header">
+      <div class="role-card highlight-devops">
+        <h3 class="devops-accent">Target Role</h3>
+        <div class="big-text">Senior DevOps / Platform Engineer</div>
+        <p>In 2026, Senior DevOps engineers own platform engineering, GitOps, AI/ML pipeline integration, and FinOps — not just CI/CD. Your 9-year background is the foundation; this plan sharpens the cutting edge.</p>
+      </div>
+      <div class="role-card">
+        <h3 style="color:var(--text-muted)">2026 Market Reality</h3>
+        <div class="big-text" style="font-size:20px;color:var(--text-dim)">What's changed since 2023</div>
+        <p>Platform Engineering has replaced pure DevOps. AI-native infrastructure, eBPF observability, policy-as-code (OPA/Kyverno), and MLOps pipelines are now <strong>expected</strong> at senior level. Cloud-native security (CNAPP) is non-negotiable.</p>
+      </div>
+    </div>
+
+    <div class="salary-section">
+      <div class="section-title devops-accent">2026 Compensation Context</div>
+      <div class="salary-row">
+        <span class="salary-label">Senior DevOps (US)</span>
+        <div class="salary-bar-wrap"><div class="salary-bar-fill" style="width:78%;background:var(--devops)"></div></div>
+        <span class="salary-val devops-accent">$155–195k</span>
+      </div>
+      <div class="salary-row">
+        <span class="salary-label">Platform Engineer (US)</span>
+        <div class="salary-bar-wrap"><div class="salary-bar-fill" style="width:85%;background:var(--devops)"></div></div>
+        <span class="salary-val devops-accent">$165–210k</span>
+      </div>
+      <div class="salary-row">
+        <span class="salary-label">DevOps + MLOps hybrid</span>
+        <div class="salary-bar-wrap"><div class="salary-bar-fill" style="width:92%;background:var(--accent)"></div></div>
+        <span class="salary-val" style="color:var(--accent)">$175–225k</span>
+      </div>
+    </div>
+
+    <div class="section-title devops-accent">2026 Required Skills Map</div>
+    <div class="skills-grid">
+      <div class="skill-pill"><span class="skill-pill-name">Kubernetes & Helm</span><span class="skill-pill-level devops-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:100%;background:var(--devops)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">GitOps (ArgoCD / Flux)</span><span class="skill-pill-level devops-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:100%;background:var(--devops)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Terraform / Pulumi</span><span class="skill-pill-level devops-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:100%;background:var(--devops)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">GitHub Actions / GitLab CI</span><span class="skill-pill-level" style="color:#06b6d4">Strengthen</span><div class="skill-bar"><div class="skill-bar-fill" style="width:90%;background:#06b6d4"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">OpenTelemetry + Grafana</span><span class="skill-pill-level devops-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%;background:var(--devops)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Service Mesh (Istio/Cilium)</span><span class="skill-pill-level" style="color:#06b6d4">Strengthen</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%;background:#06b6d4"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">DevSecOps / OPA / Kyverno</span><span class="skill-pill-level devops-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%;background:var(--devops)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Platform Engineering / IDP</span><span class="skill-pill-level devops-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:90%;background:var(--devops)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">MLOps Integration</span><span class="skill-pill-level" style="color:var(--accent)">New in 2026</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%;background:var(--accent)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">FinOps / Cloud Cost</span><span class="skill-pill-level" style="color:var(--accent)">New in 2026</span><div class="skill-bar"><div class="skill-bar-fill" style="width:75%;background:var(--accent)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Multi-Cloud (AWS/GCP/Azure)</span><span class="skill-pill-level" style="color:#06b6d4">Strengthen</span><div class="skill-bar"><div class="skill-bar-fill" style="width:88%;background:#06b6d4"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">eBPF Observability</span><span class="skill-pill-level" style="color:var(--accent)">New in 2026</span><div class="skill-bar"><div class="skill-bar-fill" style="width:65%;background:var(--accent)"></div></div></div>
+    </div>
+
+    <div class="section-title devops-accent">30-Day Timeline</div>
+    <div class="timeline">
+      <div class="timeline-week"><span class="tl-num w1">01</span><span class="tl-label">Week 1</span><span class="tl-theme">Infrastructure Core</span></div>
+      <div class="timeline-week"><span class="tl-num w2">02</span><span class="tl-label">Week 2</span><span class="tl-theme">GitOps & Platform Eng</span></div>
+      <div class="timeline-week"><span class="tl-num w3">03</span><span class="tl-label">Week 3</span><span class="tl-theme">Security & Observability</span></div>
+      <div class="timeline-week"><span class="tl-num w4">04</span><span class="tl-label">Week 4</span><span class="tl-theme">MLOps & Interview</span></div>
+    </div>
+
+    <div class="res-legend">
+      <span style="font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">Resource Legend:</span>
+      <span class="legend-item"><span style="color:#fca5a5">▶</span><span style="color:#fca5a5">YouTube Video</span></span>
+      <span class="legend-item"><span style="color:#93c5fd">📄</span><span style="color:#93c5fd">Official Docs</span></span>
+      <span class="legend-item"><span style="color:#6ee7b7">🆓</span><span style="color:#6ee7b7">Free Course / Guide</span></span>
+    </div>
+
+    <div class="highlight-box devops-box">
+      <span class="emphasis">Strategy for 9-year veterans:</span> You already understand fundamentals. This plan closes <strong>2026-specific gaps</strong> — GitOps, Platform Engineering, AI/ML pipeline integration, and FinOps. Dedicate 3–4 hours/day and build a <strong>portfolio project</strong> throughout.
+    </div>
+
+    <!-- ====== WEEK 1 ====== -->
+    <div class="week-block w1-block">
+      <div class="week-header">
+        <span class="week-number w1">01</span>
+        <div class="week-info">
+          <div class="week-label w1">Week 1 · Days 1–7</div>
+          <div class="week-title">Infrastructure as Code & Container Orchestration</div>
+          <div class="week-focus">Terraform advanced patterns · Kubernetes deep-dive · Helm & Kustomize</div>
+        </div>
+        <span class="week-tag tag-w1">Foundation</span>
+      </div>
+      <div class="week-body">
+        <div class="days-grid">
+
+          <div class="day-card">
+            <div class="day-num w1">Day 1–2</div>
+            <div class="day-title">Terraform Advanced Patterns</div>
+            <ul class="day-tasks">
+              <li>Terraform workspaces, modules, and remote state</li>
+              <li>Terragrunt for DRY infrastructure</li>
+              <li>Drift detection and import workflows</li>
+              <li>Pulumi vs Terraform decision matrix</li>
+              <li>Practice: Provision a multi-environment EKS cluster</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://developer.hashicorp.com/terraform/tutorials" target="_blank"><span class="res-icon">📄</span>HashiCorp Terraform Tutorials (Free)</a>
+                <a class="res-link free" href="https://terragrunt.gruntwork.io/docs/" target="_blank"><span class="res-icon">🆓</span>Terragrunt Official Docs</a>
+                <a class="res-link free" href="https://roadmap.sh/terraform" target="_blank"><span class="res-icon">🆓</span>Terraform Roadmap — roadmap.sh</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=7xngnjfIlK4" target="_blank"><span class="res-icon">▶</span>TechWorld with Nana — Terraform Full Course</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=SLB_c_ayRMo" target="_blank"><span class="res-icon">▶</span>freeCodeCamp — Terraform 2024 Full Course</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=V53AHWun17s" target="_blank"><span class="res-icon">▶</span>Pulumi vs Terraform — Fireship</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w1">Day 3–4</div>
+            <div class="day-title">Kubernetes Production Patterns</div>
+            <ul class="day-tasks">
+              <li>Custom Resource Definitions (CRDs) and Operators</li>
+              <li>Cluster autoscaler + KEDA event-driven scaling</li>
+              <li>Pod security standards and admission controllers</li>
+              <li>Multi-cluster management with Cluster API</li>
+              <li>Practice: Write a custom Kubernetes operator</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://kubernetes.io/docs/tutorials/" target="_blank"><span class="res-icon">📄</span>Kubernetes Official Tutorials</a>
+                <a class="res-link free" href="https://killer.sh/" target="_blank"><span class="res-icon">🆓</span>killer.sh — CKA Practice Labs</a>
+                <a class="res-link free" href="https://keda.sh/docs/2.14/concepts/" target="_blank"><span class="res-icon">🆓</span>KEDA Concepts & Docs</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=X48VuDVv0do" target="_blank"><span class="res-icon">▶</span>TechWorld with Nana — K8s Full Course (7h)</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=2T86xAtR6Fo" target="_blank"><span class="res-icon">▶</span>Kubernetes Operators Explained — IBM Tech</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=AiMN_2XCXQQ" target="_blank"><span class="res-icon">▶</span>KEDA Event-Driven Autoscaling — ByteByteGo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w1">Day 5–7</div>
+            <div class="day-title">Helm, Kustomize & Package Management</div>
+            <ul class="day-tasks">
+              <li>Helm chart authoring, hooks, and library charts</li>
+              <li>Kustomize overlays and strategic merge patches</li>
+              <li>OCI registry for Helm charts</li>
+              <li>Validate with kubeval, kube-score, Polaris</li>
+              <li>Practice: Package a microservices app with Helm</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://helm.sh/docs/" target="_blank"><span class="res-icon">📄</span>Helm Official Documentation</a>
+                <a class="res-link doc" href="https://kubectl.docs.kubernetes.io/guides/introduction/kustomize/" target="_blank"><span class="res-icon">📄</span>Kustomize Official Guide</a>
+                <a class="res-link free" href="https://artifacthub.io/" target="_blank"><span class="res-icon">🆓</span>Artifact Hub — Helm Charts Repository</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=-ykwb1d0DXU" target="_blank"><span class="res-icon">▶</span>TechWorld with Nana — Helm Crash Course</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=5gsHYdiD6v8" target="_blank"><span class="res-icon">▶</span>Kustomize Tutorial — That DevOps Guy</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=ZMFYSm0ldQ0" target="_blank"><span class="res-icon">▶</span>Helm vs Kustomize — DevOps Toolkit</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="highlight-box devops-box" style="margin-top:24px">
+          <span class="emphasis">Week 1 Deliverable:</span> A GitHub repo with a Terraform-provisioned EKS cluster, Helm charts for 3 services, and a functioning Kustomize overlay structure. This becomes your portfolio anchor.
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== WEEK 2 ====== -->
+    <div class="week-block w2-block">
+      <div class="week-header">
+        <span class="week-number w2">02</span>
+        <div class="week-info">
+          <div class="week-label w2">Week 2 · Days 8–14</div>
+          <div class="week-title">GitOps, CI/CD & Platform Engineering</div>
+          <div class="week-focus">ArgoCD · GitHub Actions advanced · Internal Developer Platforms · Service Mesh</div>
+        </div>
+        <span class="week-tag tag-w2">Platform</span>
+      </div>
+      <div class="week-body">
+        <div class="days-grid">
+
+          <div class="day-card">
+            <div class="day-num w2">Day 8–9</div>
+            <div class="day-title">GitOps with ArgoCD & Flux</div>
+            <ul class="day-tasks">
+              <li>ArgoCD ApplicationSets and multi-cluster sync</li>
+              <li>Flux v2 source controller and kustomization</li>
+              <li>Progressive delivery with Argo Rollouts (canary, blue-green)</li>
+              <li>GitOps for secrets with Sealed Secrets / ESO</li>
+              <li>Practice: Set up a full GitOps pipeline for prod/staging</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://argo-cd.readthedocs.io/en/stable/" target="_blank"><span class="res-icon">📄</span>ArgoCD Official Documentation</a>
+                <a class="res-link doc" href="https://fluxcd.io/flux/concepts/" target="_blank"><span class="res-icon">📄</span>Flux v2 Concepts & Docs</a>
+                <a class="res-link free" href="https://argoproj.github.io/argo-rollouts/" target="_blank"><span class="res-icon">🆓</span>Argo Rollouts — Progressive Delivery Docs</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=MeU5_k9ssrs" target="_blank"><span class="res-icon">▶</span>TechWorld with Nana — ArgoCD Full Course</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=lGkFKQJbMjQ" target="_blank"><span class="res-icon">▶</span>GitOps with Flux v2 — DevOps Toolkit</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=hIL0E2gLkf8" target="_blank"><span class="res-icon">▶</span>Argo Rollouts Canary Deployments — KubeCon</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w2">Day 10–11</div>
+            <div class="day-title">Advanced CI/CD Pipelines</div>
+            <ul class="day-tasks">
+              <li>GitHub Actions: reusable workflows, composite actions</li>
+              <li>GitLab CI: DAG pipelines, dynamic child pipelines</li>
+              <li>Supply chain security: SLSA, Sigstore/Cosign</li>
+              <li>Container image signing and verification</li>
+              <li>Dagger.io for portable pipelines</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://docs.github.com/en/actions" target="_blank"><span class="res-icon">📄</span>GitHub Actions Official Docs</a>
+                <a class="res-link doc" href="https://slsa.dev/spec/v1.0/" target="_blank"><span class="res-icon">📄</span>SLSA Supply Chain Security Framework</a>
+                <a class="res-link free" href="https://docs.sigstore.dev/" target="_blank"><span class="res-icon">🆓</span>Sigstore / Cosign Documentation</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=R8_veQiYBjI" target="_blank"><span class="res-icon">▶</span>TechWorld with Nana — GitHub Actions Tutorial</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=yfBtjLxn_6k" target="_blank"><span class="res-icon">▶</span>Supply Chain Security with Sigstore — CNCF</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=ml5uHYnZl-A" target="_blank"><span class="res-icon">▶</span>Dagger.io — Portable CI/CD Pipelines</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w2">Day 12–14</div>
+            <div class="day-title">Platform Engineering & IDP</div>
+            <ul class="day-tasks">
+              <li>Internal Developer Platforms — Backstage setup</li>
+              <li>Self-service infrastructure with Crossplane</li>
+              <li>Service mesh with Istio or Cilium (eBPF)</li>
+              <li>Golden paths — standardized templates for developers</li>
+              <li>Practice: Build a Backstage plugin for your team</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://backstage.io/docs/overview/what-is-backstage" target="_blank"><span class="res-icon">📄</span>Backstage.io Official Docs</a>
+                <a class="res-link doc" href="https://docs.crossplane.io/latest/" target="_blank"><span class="res-icon">📄</span>Crossplane Documentation</a>
+                <a class="res-link free" href="https://platformengineering.org/blog/what-is-platform-engineering" target="_blank"><span class="res-icon">🆓</span>What is Platform Engineering? — platformengineering.org</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=ghzsBm8vOms" target="_blank"><span class="res-icon">▶</span>Platform Engineering Explained — DevOps Toolkit</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=85MTIiPCDus" target="_blank"><span class="res-icon">▶</span>Backstage Developer Portal — That DevOps Guy</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=79rMmJPZRDw" target="_blank"><span class="res-icon">▶</span>Cilium & eBPF Service Mesh — KubeCon Talk</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="highlight-box devops-box" style="margin-top:24px">
+          <span class="emphasis">Week 2 Deliverable:</span> ArgoCD multi-cluster setup with progressive delivery, a reusable GitHub Actions workflow library, and a basic Backstage portal. Document your design decisions — interviewers love "why" answers.
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== WEEK 3 ====== -->
+    <div class="week-block w3-block">
+      <div class="week-header">
+        <span class="week-number w3">03</span>
+        <div class="week-info">
+          <div class="week-label w3">Week 3 · Days 15–21</div>
+          <div class="week-title">DevSecOps, Observability & FinOps</div>
+          <div class="week-focus">OPA · OpenTelemetry · Grafana Stack · Cloud Cost Engineering</div>
+        </div>
+        <span class="week-tag tag-w3">Security & Ops</span>
+      </div>
+      <div class="week-body">
+        <div class="days-grid">
+
+          <div class="day-card">
+            <div class="day-num w3">Day 15–16</div>
+            <div class="day-title">DevSecOps & Policy as Code</div>
+            <ul class="day-tasks">
+              <li>OPA + Gatekeeper for K8s admission control</li>
+              <li>Kyverno policies — mutation, validation, generation</li>
+              <li>SBOM generation with Syft and Grype</li>
+              <li>SAST/DAST integration in pipelines (Semgrep, Trivy)</li>
+              <li>CNAPP tools: Wiz, Prisma Cloud awareness</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://www.openpolicyagent.org/docs/latest/" target="_blank"><span class="res-icon">📄</span>OPA Official Documentation</a>
+                <a class="res-link doc" href="https://kyverno.io/docs/" target="_blank"><span class="res-icon">📄</span>Kyverno Policy Library & Docs</a>
+                <a class="res-link free" href="https://github.com/anchore/syft" target="_blank"><span class="res-icon">🆓</span>Syft — SBOM Generator (GitHub)</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=14lGc7xMAe4" target="_blank"><span class="res-icon">▶</span>OPA & Gatekeeper on Kubernetes — TechWorld</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=WzFqMKWgG1o" target="_blank"><span class="res-icon">▶</span>Kyverno Policy-as-Code Tutorial — DevOps Toolkit</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=bdeu8X5jQrc" target="_blank"><span class="res-icon">▶</span>DevSecOps Pipeline with Trivy — That DevOps Guy</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w3">Day 17–19</div>
+            <div class="day-title">Observability — OpenTelemetry Stack</div>
+            <ul class="day-tasks">
+              <li>OpenTelemetry collector configuration and pipelines</li>
+              <li>Distributed tracing with Tempo and Jaeger</li>
+              <li>Metrics with Prometheus, Thanos for long-term storage</li>
+              <li>Logging with Loki + LogQL queries</li>
+              <li>Grafana dashboards and SLO alerting</li>
+              <li>eBPF observability with Pixie and Tetragon</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://opentelemetry.io/docs/" target="_blank"><span class="res-icon">📄</span>OpenTelemetry Official Docs</a>
+                <a class="res-link free" href="https://grafana.com/tutorials/" target="_blank"><span class="res-icon">🆓</span>Grafana Labs Free Tutorials</a>
+                <a class="res-link free" href="https://prometheus.io/docs/introduction/overview/" target="_blank"><span class="res-icon">🆓</span>Prometheus Documentation</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=dfpGU9al_i0" target="_blank"><span class="res-icon">▶</span>OpenTelemetry Explained — TechWorld with Nana</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=h4Sl21AKiDg" target="_blank"><span class="res-icon">▶</span>Grafana Loki Log Aggregation — TechWorld</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=QoDqxm7ybLc" target="_blank"><span class="res-icon">▶</span>Prometheus & Grafana Full Tutorial — freeCodeCamp</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w3">Day 20–21</div>
+            <div class="day-title">FinOps & Cloud Cost Engineering</div>
+            <ul class="day-tasks">
+              <li>FinOps framework — inform, optimize, operate phases</li>
+              <li>Kubecost for K8s cost allocation</li>
+              <li>AWS Cost Explorer + Savings Plans strategy</li>
+              <li>Spot instances and auto-scaling for cost reduction</li>
+              <li>Practice: Build a cost optimization runbook</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link free" href="https://www.finops.org/introduction/what-is-finops/" target="_blank"><span class="res-icon">🆓</span>FinOps Foundation — What is FinOps?</a>
+                <a class="res-link free" href="https://www.kubecost.com/kubernetes-cost-optimization/" target="_blank"><span class="res-icon">🆓</span>Kubecost K8s Cost Optimization Guide</a>
+                <a class="res-link doc" href="https://docs.aws.amazon.com/cost-management/latest/userguide/what-is-costmanagement.html" target="_blank"><span class="res-icon">📄</span>AWS Cost Management Docs</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=VDrcgEne6lU" target="_blank"><span class="res-icon">▶</span>FinOps Explained — FinOps Foundation</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=5M0OuNHNJZA" target="_blank"><span class="res-icon">▶</span>Kubernetes Cost Optimization with Kubecost</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=wJqfJHEHxZ8" target="_blank"><span class="res-icon">▶</span>AWS Savings Plans & Spot Instances — AWS</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="highlight-box devops-box" style="margin-top:24px">
+          <span class="emphasis">Week 3 Deliverable:</span> OPA/Kyverno policies repo, a complete observability stack with SLO dashboards, and a cost optimization report. These demonstrate senior-level thinking, not just execution.
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== WEEK 4 ====== -->
+    <div class="week-block w4-block">
+      <div class="week-header">
+        <span class="week-number w4">04</span>
+        <div class="week-info">
+          <div class="week-label w4">Week 4 · Days 22–30</div>
+          <div class="week-title">MLOps Integration, Interview Prep & Portfolio</div>
+          <div class="week-focus">Kubeflow · MLflow · GPU Infra · System Design · Behavioral</div>
+        </div>
+        <span class="week-tag tag-w4">Launch</span>
+      </div>
+      <div class="week-body">
+        <div class="days-grid">
+
+          <div class="day-card">
+            <div class="day-num w4">Day 22–24</div>
+            <div class="day-title">MLOps Infrastructure for DevOps Engineers</div>
+            <ul class="day-tasks">
+              <li>ML pipeline orchestration with Kubeflow Pipelines</li>
+              <li>Model registry and experiment tracking with MLflow</li>
+              <li>GPU workload scheduling on Kubernetes</li>
+              <li>Model serving: KServe, Triton Inference Server</li>
+              <li>Data versioning with DVC and LakeFS</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://www.kubeflow.org/docs/started/introduction/" target="_blank"><span class="res-icon">📄</span>Kubeflow Official Documentation</a>
+                <a class="res-link doc" href="https://mlflow.org/docs/latest/index.html" target="_blank"><span class="res-icon">📄</span>MLflow Documentation</a>
+                <a class="res-link free" href="https://kserve.github.io/website/latest/" target="_blank"><span class="res-icon">🆓</span>KServe Model Serving Docs</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=6wT6bMj5TyE" target="_blank"><span class="res-icon">▶</span>MLflow Tutorial for Beginners — Krish Naik</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=859OxXrt_TI" target="_blank"><span class="res-icon">▶</span>Kubeflow Pipelines Tutorial — Google Cloud</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=UQ5CkMhkExQ" target="_blank"><span class="res-icon">▶</span>MLOps Full Course — freeCodeCamp</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w4">Day 25–27</div>
+            <div class="day-title">System Design & Architecture Review</div>
+            <ul class="day-tasks">
+              <li>Design a zero-downtime multi-region deployment</li>
+              <li>Design a GitOps platform for 50+ microservices</li>
+              <li>Design a cost-optimized ML training pipeline</li>
+              <li>Disaster recovery and RTO/RPO planning</li>
+              <li>Review 3 past incidents with modern solutions</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link free" href="https://github.com/donnemartin/system-design-primer" target="_blank"><span class="res-icon">🆓</span>System Design Primer — GitHub (Free)</a>
+                <a class="res-link free" href="https://roadmap.sh/devops" target="_blank"><span class="res-icon">🆓</span>DevOps Roadmap 2026 — roadmap.sh</a>
+                <a class="res-link free" href="https://aws.amazon.com/architecture/well-architected/" target="_blank"><span class="res-icon">🆓</span>AWS Well-Architected Framework</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/@ByteByteGo" target="_blank"><span class="res-icon">▶</span>ByteByteGo — System Design Channel</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=i7twT3x5yv8" target="_blank"><span class="res-icon">▶</span>Multi-Region Architecture — AWS re:Invent</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=m8Icp_Cid5o" target="_blank"><span class="res-icon">▶</span>Disaster Recovery Strategies Explained</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w4">Day 28–30</div>
+            <div class="day-title">Interview Preparation & Portfolio Polish</div>
+            <ul class="day-tasks">
+              <li>STAR stories for 8 core competencies</li>
+              <li>Polish GitHub portfolio — READMEs, architecture diagrams</li>
+              <li>Update LinkedIn with 2026 keywords</li>
+              <li>Mock interviews × 3 (peer or paid platform)</li>
+              <li>Prepare 5 questions to ask each company</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Free Interview Prep</div>
+              <div class="res-links">
+                <a class="res-link free" href="https://github.com/bregman-arie/devops-exercises" target="_blank"><span class="res-icon">🆓</span>DevOps Exercises — 2,600+ Questions (GitHub)</a>
+                <a class="res-link free" href="https://www.pramp.com/" target="_blank"><span class="res-icon">🆓</span>Pramp — Free Mock Interviews</a>
+                <a class="res-link free" href="https://github.com/trimstray/the-book-of-secret-knowledge" target="_blank"><span class="res-icon">🆓</span>Book of Secret Knowledge — DevOps Resources</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=jSTo3HFMkvQ" target="_blank"><span class="res-icon">▶</span>Senior DevOps Interview Q&A — TechWorld</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=rH11NA_hHzU" target="_blank"><span class="res-icon">▶</span>How to Answer System Design Questions</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=BWtf5b8GGNQ" target="_blank"><span class="res-icon">▶</span>STAR Method for Technical Interviews</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="tools-section">
+      <div class="section-title devops-accent">Essential Tools & Certifications for 2026</div>
+      <div class="tools-categories">
+        <div class="tool-cat">
+          <div class="tool-cat-title devops-accent">Certifications to Target</div>
+          <ul class="tool-list">
+            <li><span class="tool-dot" style="background:var(--devops)"></span>CKA / CKS (Kubernetes)</li>
+            <li><span class="tool-dot" style="background:var(--devops)"></span>AWS/GCP Solutions Architect Pro</li>
+            <li><span class="tool-dot" style="background:var(--devops)"></span>HashiCorp Terraform Associate</li>
+            <li><span class="tool-dot" style="background:var(--devops)"></span>GitLab Professional CI/CD</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>FinOps Certified Practitioner</li>
+          </ul>
+        </div>
+        <div class="tool-cat">
+          <div class="tool-cat-title" style="color:#06b6d4">Container & Orchestration</div>
+          <ul class="tool-list">
+            <li><span class="tool-dot" style="background:#06b6d4"></span>Kubernetes 1.31+</li>
+            <li><span class="tool-dot" style="background:#06b6d4"></span>Helm 3.x, Kustomize</li>
+            <li><span class="tool-dot" style="background:#06b6d4"></span>Cluster API</li>
+            <li><span class="tool-dot" style="background:#06b6d4"></span>Crossplane</li>
+            <li><span class="tool-dot" style="background:#06b6d4"></span>Podman / containerd</li>
+          </ul>
+        </div>
+        <div class="tool-cat">
+          <div class="tool-cat-title" style="color:#10b981">GitOps & CI/CD</div>
+          <ul class="tool-list">
+            <li><span class="tool-dot" style="background:#10b981"></span>ArgoCD + Argo Rollouts</li>
+            <li><span class="tool-dot" style="background:#10b981"></span>Flux v2</li>
+            <li><span class="tool-dot" style="background:#10b981"></span>GitHub Actions</li>
+            <li><span class="tool-dot" style="background:#10b981"></span>Dagger.io</li>
+            <li><span class="tool-dot" style="background:#10b981"></span>Sigstore / Cosign</li>
+          </ul>
+        </div>
+        <div class="tool-cat">
+          <div class="tool-cat-title" style="color:var(--accent)">Observability Stack</div>
+          <ul class="tool-list">
+            <li><span class="tool-dot" style="background:var(--accent)"></span>OpenTelemetry Collector</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>Grafana + Loki + Tempo</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>Prometheus + Thanos</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>Pixie (eBPF)</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>PagerDuty / OpsGenie</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="interview-section">
+      <div class="section-title devops-accent">Top Senior DevOps Interview Questions 2026</div>
+      <div class="questions-grid">
+        <div class="question-card"><div class="q-category">System Design</div><div class="q-text">Design a zero-downtime deployment strategy for a stateful application with 10M daily users across 3 regions.</div></div>
+        <div class="question-card"><div class="q-category">GitOps</div><div class="q-text">How would you architect a GitOps workflow for 80 microservices across dev, staging, and prod environments using ArgoCD?</div></div>
+        <div class="question-card"><div class="q-category">Security</div><div class="q-text">Walk me through your approach to securing a Kubernetes cluster — from API server to pod-to-pod communication.</div></div>
+        <div class="question-card"><div class="q-category">Observability</div><div class="q-text">Your SLO is 99.9% uptime. An alert fires at 2am. Walk me through your incident response process from detection to resolution.</div></div>
+        <div class="question-card"><div class="q-category">Platform Engineering</div><div class="q-text">How would you build an Internal Developer Platform that reduces developer cognitive load while maintaining compliance?</div></div>
+        <div class="question-card"><div class="q-category">FinOps</div><div class="q-text">Your Kubernetes cluster costs doubled last quarter. How do you identify, prioritize, and fix the cost drivers?</div></div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-title devops-accent">30-Day Completion Checklist</div>
+      <div class="check-grid">
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>Terraform multi-env infra live on GitHub</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>Kubernetes operator written and tested</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>ArgoCD multi-cluster GitOps pipeline running</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>Progressive delivery with Argo Rollouts demo</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>OPA/Kyverno policies repo with 10+ policies</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>OpenTelemetry + Grafana stack deployed</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>MLflow + KServe model serving setup</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>System design answers for 5 scenarios</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>LinkedIn updated with 2026 keywords</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>3 mock interviews completed</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>CKA exam scheduled (or in progress)</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'devops')"></div>5 job applications sent with tailored CVs</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================= AI ENGINEER PANEL ============================= -->
+<div id="panel-ai" class="panel">
+  <div class="section">
+
+    <div class="role-header">
+      <div class="role-card highlight-ai">
+        <h3 class="ai-accent">Target Role</h3>
+        <div class="big-text">AI / ML Engineer</div>
+        <p>The 2026 AI Engineer architects production LLM systems, implements RAG pipelines, fine-tunes models, builds agentic workflows, and deploys inference infrastructure at scale. Your DevOps background is a huge asset here.</p>
+      </div>
+      <div class="role-card">
+        <h3 style="color:var(--text-muted)">2026 Market Reality</h3>
+        <div class="big-text" style="font-size:20px;color:var(--text-dim)">What companies actually need</div>
+        <p>Companies have moved from "AI experiments" to "AI in production." They need engineers who can build reliable RAG systems, evaluate LLM output quality, design agentic pipelines, and deploy models efficiently with vLLM/Triton. Your infra skills are a unique differentiator.</p>
+      </div>
+    </div>
+
+    <div class="salary-section">
+      <div class="section-title ai-accent">2026 Compensation Context</div>
+      <div class="salary-row">
+        <span class="salary-label">AI Engineer (US)</span>
+        <div class="salary-bar-wrap"><div class="salary-bar-fill" style="width:82%;background:var(--ai)"></div></div>
+        <span class="salary-val ai-accent">$165–205k</span>
+      </div>
+      <div class="salary-row">
+        <span class="salary-label">Senior ML Engineer (US)</span>
+        <div class="salary-bar-wrap"><div class="salary-bar-fill" style="width:90%;background:var(--ai)"></div></div>
+        <span class="salary-val ai-accent">$180–230k</span>
+      </div>
+      <div class="salary-row">
+        <span class="salary-label">AI Infra Engineer (US)</span>
+        <div class="salary-bar-wrap"><div class="salary-bar-fill" style="width:97%;background:var(--accent)"></div></div>
+        <span class="salary-val" style="color:var(--accent)">$195–260k</span>
+      </div>
+    </div>
+
+    <div class="section-title ai-accent">2026 Required Skills Map</div>
+    <div class="skills-grid">
+      <div class="skill-pill"><span class="skill-pill-name">LLM Fundamentals</span><span class="skill-pill-level ai-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:100%;background:var(--ai)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">RAG Architecture</span><span class="skill-pill-level ai-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:100%;background:var(--ai)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">LangChain / LlamaIndex</span><span class="skill-pill-level ai-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%;background:var(--ai)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Vector Databases</span><span class="skill-pill-level ai-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:95%;background:var(--ai)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Fine-tuning (LoRA/QLoRA)</span><span class="skill-pill-level" style="color:#06b6d4">Strengthen</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%;background:#06b6d4"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Agentic AI (LangGraph)</span><span class="skill-pill-level ai-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:90%;background:var(--ai)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Python + PyTorch</span><span class="skill-pill-level ai-accent">Must Master</span><div class="skill-bar"><div class="skill-bar-fill" style="width:100%;background:var(--ai)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">MLflow / Experiment Tracking</span><span class="skill-pill-level" style="color:#06b6d4">Strengthen</span><div class="skill-bar"><div class="skill-bar-fill" style="width:85%;background:#06b6d4"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">vLLM / Triton Inference</span><span class="skill-pill-level" style="color:var(--accent)">New in 2026</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%;background:var(--accent)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">LLM Evaluation Frameworks</span><span class="skill-pill-level" style="color:var(--accent)">New in 2026</span><div class="skill-bar"><div class="skill-bar-fill" style="width:80%;background:var(--accent)"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">Prompt Engineering</span><span class="skill-pill-level" style="color:#06b6d4">Strengthen</span><div class="skill-bar"><div class="skill-bar-fill" style="width:88%;background:#06b6d4"></div></div></div>
+      <div class="skill-pill"><span class="skill-pill-name">AI Safety & Responsible AI</span><span class="skill-pill-level" style="color:var(--accent)">New in 2026</span><div class="skill-bar"><div class="skill-bar-fill" style="width:70%;background:var(--accent)"></div></div></div>
+    </div>
+
+    <div class="section-title ai-accent">30-Day Timeline</div>
+    <div class="timeline">
+      <div class="timeline-week"><span class="tl-num w1">01</span><span class="tl-label">Week 1</span><span class="tl-theme">LLM Fundamentals</span></div>
+      <div class="timeline-week"><span class="tl-num w2">02</span><span class="tl-label">Week 2</span><span class="tl-theme">RAG & Vector DBs</span></div>
+      <div class="timeline-week"><span class="tl-num w3">03</span><span class="tl-label">Week 3</span><span class="tl-theme">Agents & Fine-tuning</span></div>
+      <div class="timeline-week"><span class="tl-num w4">04</span><span class="tl-label">Week 4</span><span class="tl-theme">Production & Interview</span></div>
+    </div>
+
+    <div class="res-legend">
+      <span style="font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;">Resource Legend:</span>
+      <span class="legend-item"><span style="color:#fca5a5">▶</span><span style="color:#fca5a5">YouTube Video</span></span>
+      <span class="legend-item"><span style="color:#93c5fd">📄</span><span style="color:#93c5fd">Official Docs</span></span>
+      <span class="legend-item"><span style="color:#6ee7b7">🆓</span><span style="color:#6ee7b7">Free Course / Guide</span></span>
+    </div>
+
+    <div class="highlight-box ai-box">
+      <span class="emphasis">Your DevOps advantage:</span> You already understand deployment pipelines, containerization, and production systems. Focus your energy on <strong>LLM-specific concepts</strong> and <strong>Python proficiency</strong>. Your infra skills shine in the MLOps interview rounds — lean into them.
+    </div>
+
+    <!-- ====== AI WEEK 1 ====== -->
+    <div class="week-block w1-block">
+      <div class="week-header">
+        <span class="week-number w1">01</span>
+        <div class="week-info">
+          <div class="week-label w1">Week 1 · Days 1–7</div>
+          <div class="week-title">LLM Foundations & Python for AI</div>
+          <div class="week-focus">Transformers · Embeddings · Prompt Engineering · Python / PyTorch basics</div>
+        </div>
+        <span class="week-tag tag-w1">Foundations</span>
+      </div>
+      <div class="week-body">
+        <div class="days-grid">
+
+          <div class="day-card">
+            <div class="day-num w1">Day 1–2</div>
+            <div class="day-title">LLM Architecture Essentials</div>
+            <ul class="day-tasks">
+              <li>Transformer architecture — attention mechanism deep dive</li>
+              <li>Tokenization, embeddings, positional encoding</li>
+              <li>GPT vs BERT vs T5 architectures</li>
+              <li>Context windows, temperature, top-p sampling</li>
+              <li>Practice: Interact with HuggingFace models via pipeline API</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link free" href="https://huggingface.co/learn/nlp-course/chapter1/1" target="_blank"><span class="res-icon">🆓</span>HuggingFace NLP Course — Chapter 1 (Free)</a>
+                <a class="res-link free" href="https://jalammar.github.io/illustrated-transformer/" target="_blank"><span class="res-icon">🆓</span>The Illustrated Transformer — Jay Alammar</a>
+                <a class="res-link doc" href="https://platform.openai.com/docs/introduction" target="_blank"><span class="res-icon">📄</span>OpenAI API Documentation</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=kCc8FmEb1nY" target="_blank"><span class="res-icon">▶</span>Andrej Karpathy — Let's Build GPT From Scratch</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=VMj-3S1tku0" target="_blank"><span class="res-icon">▶</span>Andrej Karpathy — Neural Networks Zero to Hero</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=wjZofJX0v4M" target="_blank"><span class="res-icon">▶</span>3Blue1Brown — But What Is a GPT? (Visual)</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w1">Day 3–4</div>
+            <div class="day-title">Prompt Engineering & LLM APIs</div>
+            <ul class="day-tasks">
+              <li>System prompts, few-shot learning, chain-of-thought</li>
+              <li>OpenAI, Anthropic, Gemini API patterns</li>
+              <li>Structured output (JSON mode, tool calling)</li>
+              <li>Prompt injection attacks and defense</li>
+              <li>Practice: Build a document Q&A system with raw API calls</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank"><span class="res-icon">📄</span>Anthropic Prompt Engineering Guide</a>
+                <a class="res-link free" href="https://www.promptingguide.ai/" target="_blank"><span class="res-icon">🆓</span>Prompt Engineering Guide — promptingguide.ai</a>
+                <a class="res-link free" href="https://github.com/openai/openai-cookbook" target="_blank"><span class="res-icon">🆓</span>OpenAI Cookbook (GitHub — Free)</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=_ZvnD73m40o" target="_blank"><span class="res-icon">▶</span>Prompt Engineering Full Course — freeCodeCamp</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=dOxUroR57xs" target="_blank"><span class="res-icon">▶</span>Chain-of-Thought Prompting Explained — Sam Witteveen</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=T9aRN5JkmL8" target="_blank"><span class="res-icon">▶</span>Function Calling & Tool Use — OpenAI</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w1">Day 5–7</div>
+            <div class="day-title">Python Proficiency for AI Engineering</div>
+            <ul class="day-tasks">
+              <li>Async Python for LLM streaming responses</li>
+              <li>Pydantic for data validation and structured outputs</li>
+              <li>PyTorch tensor operations and basic model inference</li>
+              <li>FastAPI for serving ML models</li>
+              <li>Practice: Build a streaming chatbot with FastAPI + OpenAI</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://fastapi.tiangolo.com/tutorial/" target="_blank"><span class="res-icon">📄</span>FastAPI Official Tutorial</a>
+                <a class="res-link free" href="https://pytorch.org/tutorials/beginner/basics/intro.html" target="_blank"><span class="res-icon">🆓</span>PyTorch Basics for Beginners (Official)</a>
+                <a class="res-link free" href="https://docs.pydantic.dev/latest/" target="_blank"><span class="res-icon">🆓</span>Pydantic v2 Documentation</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=0sOvCWFmrtA" target="_blank"><span class="res-icon">▶</span>FastAPI Tutorial — TechWorld with Nana</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=Sv2pJp2P9YA" target="_blank"><span class="res-icon">▶</span>PyTorch for Deep Learning — freeCodeCamp</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=GhRMnL7YQ7I" target="_blank"><span class="res-icon">▶</span>Build a Streaming AI Chatbot with FastAPI</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="highlight-box ai-box" style="margin-top:24px">
+          <span class="emphasis">Week 1 Deliverable:</span> A functional document Q&A system that streams responses, uses structured outputs, and handles prompt injection. Host on GitHub with a clear README explaining your architecture choices.
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== AI WEEK 2 ====== -->
+    <div class="week-block w2-block">
+      <div class="week-header">
+        <span class="week-number w2">02</span>
+        <div class="week-info">
+          <div class="week-label w2">Week 2 · Days 8–14</div>
+          <div class="week-title">RAG Systems & Vector Databases</div>
+          <div class="week-focus">LangChain · LlamaIndex · Pinecone · Weaviate · Advanced RAG patterns</div>
+        </div>
+        <span class="week-tag tag-w2">RAG</span>
+      </div>
+      <div class="week-body">
+        <div class="days-grid">
+
+          <div class="day-card">
+            <div class="day-num w2">Day 8–9</div>
+            <div class="day-title">Vector Databases & Embeddings</div>
+            <ul class="day-tasks">
+              <li>Embedding models — OpenAI, Cohere, local (BGE, E5)</li>
+              <li>Vector similarity search — cosine, dot product, ANN</li>
+              <li>Pinecone, Weaviate, Qdrant — hands-on comparison</li>
+              <li>Pgvector for PostgreSQL-based vector search</li>
+              <li>Chunking strategies — semantic, recursive, sliding window</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link free" href="https://www.pinecone.io/learn/vector-embeddings/" target="_blank"><span class="res-icon">🆓</span>Pinecone Learn Hub — Vector Embeddings Guide</a>
+                <a class="res-link doc" href="https://weaviate.io/developers/weaviate" target="_blank"><span class="res-icon">📄</span>Weaviate Documentation</a>
+                <a class="res-link free" href="https://qdrant.tech/documentation/overview/" target="_blank"><span class="res-icon">🆓</span>Qdrant Documentation (Open Source)</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=dN0lsF2cvm4" target="_blank"><span class="res-icon">▶</span>Vector Databases Explained — Fireship</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=klTvEwg3oJ4" target="_blank"><span class="res-icon">▶</span>Word Embeddings & Semantic Search — 3Blue1Brown</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=ySus5ZS0b94" target="_blank"><span class="res-icon">▶</span>Chunking Strategies for RAG — LlamaIndex</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w2">Day 10–11</div>
+            <div class="day-title">LangChain & LlamaIndex Deep Dive</div>
+            <ul class="day-tasks">
+              <li>LangChain LCEL (LangChain Expression Language) chains</li>
+              <li>LlamaIndex query engines and routers</li>
+              <li>Document loaders, transformers, and metadata filters</li>
+              <li>Hybrid search — BM25 + vector search</li>
+              <li>Contextual compression and re-ranking (Cohere Rerank)</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://python.langchain.com/docs/introduction/" target="_blank"><span class="res-icon">📄</span>LangChain Python Documentation</a>
+                <a class="res-link doc" href="https://docs.llamaindex.ai/en/stable/" target="_blank"><span class="res-icon">📄</span>LlamaIndex Documentation</a>
+                <a class="res-link free" href="https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/" target="_blank"><span class="res-icon">🆓</span>DeepLearning.AI — LangChain Course (Free)</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=aywZrzNaKjs" target="_blank"><span class="res-icon">▶</span>LangChain LCEL Tutorial — Sam Witteveen</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=tFHeUSJAYbE" target="_blank"><span class="res-icon">▶</span>LlamaIndex Full Course — freeCodeCamp</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=9f7zAXVxmYM" target="_blank"><span class="res-icon">▶</span>Hybrid Search BM25 + Vector — Weaviate</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w2">Day 12–14</div>
+            <div class="day-title">Advanced RAG Patterns</div>
+            <ul class="day-tasks">
+              <li>HyDE — Hypothetical Document Embeddings</li>
+              <li>Multi-query retrieval and RAG fusion</li>
+              <li>Knowledge graphs as retrieval source (GraphRAG)</li>
+              <li>Multimodal RAG with images and tables</li>
+              <li>Practice: Build a production-grade RAG for technical docs</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link free" href="https://www.deeplearning.ai/short-courses/building-evaluating-advanced-rag/" target="_blank"><span class="res-icon">🆓</span>DeepLearning.AI — Advanced RAG Course (Free)</a>
+                <a class="res-link free" href="https://github.com/microsoft/graphrag" target="_blank"><span class="res-icon">🆓</span>Microsoft GraphRAG — GitHub</a>
+                <a class="res-link free" href="https://blog.langchain.dev/deconstructing-rag/" target="_blank"><span class="res-icon">🆓</span>Deconstructing RAG — LangChain Blog</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=sVcwVQRHIc8" target="_blank"><span class="res-icon">▶</span>Advanced RAG Techniques — LangChain</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=qN_2fnOPY-M" target="_blank"><span class="res-icon">▶</span>GraphRAG Explained — Microsoft Research</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=wd7TZ4w1mSw" target="_blank"><span class="res-icon">▶</span>RAG From Scratch — LangChain Full Series</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="highlight-box ai-box" style="margin-top:24px">
+          <span class="emphasis">Week 2 Deliverable:</span> A full-stack RAG application with hybrid search, re-ranking, and metadata filtering deployed on Kubernetes. This cross-skill project is extremely impressive in interviews.
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== AI WEEK 3 ====== -->
+    <div class="week-block w3-block">
+      <div class="week-header">
+        <span class="week-number w3">03</span>
+        <div class="week-info">
+          <div class="week-label w3">Week 3 · Days 15–21</div>
+          <div class="week-title">Agentic AI, Fine-tuning & Evaluation</div>
+          <div class="week-focus">LangGraph · AutoGen · LoRA fine-tuning · LLM Evaluation · RAGAS</div>
+        </div>
+        <span class="week-tag tag-w3">Advanced AI</span>
+      </div>
+      <div class="week-body">
+        <div class="days-grid">
+
+          <div class="day-card">
+            <div class="day-num w3">Day 15–17</div>
+            <div class="day-title">Agentic AI & Multi-Agent Systems</div>
+            <ul class="day-tasks">
+              <li>ReAct pattern — reasoning + acting loops</li>
+              <li>LangGraph for stateful multi-step agents</li>
+              <li>Tool calling and function execution</li>
+              <li>Multi-agent frameworks: AutoGen, CrewAI</li>
+              <li>Human-in-the-loop patterns and guardrails</li>
+              <li>Memory: short-term, long-term, episodic</li>
+              <li>Practice: Build a DevOps automation agent</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://langchain-ai.github.io/langgraph/" target="_blank"><span class="res-icon">📄</span>LangGraph Official Documentation</a>
+                <a class="res-link free" href="https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/" target="_blank"><span class="res-icon">🆓</span>DeepLearning.AI — AI Agents in LangGraph (Free)</a>
+                <a class="res-link free" href="https://microsoft.github.io/autogen/stable/" target="_blank"><span class="res-icon">🆓</span>AutoGen Documentation — Microsoft</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=v9fkbTxPzs0" target="_blank"><span class="res-icon">▶</span>LangGraph Full Tutorial — LangChain</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=MVBBeL7vdAw" target="_blank"><span class="res-icon">▶</span>CrewAI Multi-Agent Framework — NetworkChuck</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=Rc37gJqnvqs" target="_blank"><span class="res-icon">▶</span>Build an AI Agent from Scratch — Andrej Karpathy</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w3">Day 18–19</div>
+            <div class="day-title">Fine-tuning with LoRA & QLoRA</div>
+            <ul class="day-tasks">
+              <li>When to fine-tune vs prompt engineer vs RAG</li>
+              <li>LoRA and QLoRA — parameter-efficient fine-tuning</li>
+              <li>Fine-tuning with HuggingFace TRL + PEFT libraries</li>
+              <li>Dataset preparation and instruction tuning format</li>
+              <li>Merging adapters and quantization (GGUF, GPTQ)</li>
+              <li>Practice: Fine-tune Llama 3 on a domain dataset</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://huggingface.co/docs/peft/index" target="_blank"><span class="res-icon">📄</span>HuggingFace PEFT Documentation</a>
+                <a class="res-link free" href="https://github.com/unslothai/unsloth" target="_blank"><span class="res-icon">🆓</span>Unsloth — Fast LoRA Fine-tuning (GitHub)</a>
+                <a class="res-link free" href="https://www.deeplearning.ai/short-courses/finetuning-large-language-models/" target="_blank"><span class="res-icon">🆓</span>DeepLearning.AI — Fine-tuning LLMs (Free)</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=eC6Hd1hFvos" target="_blank"><span class="res-icon">▶</span>QLoRA Fine-tuning Explained — Abhishek Thakur</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=1PbAbe4KZf8" target="_blank"><span class="res-icon">▶</span>Fine-tune Llama 3 with Unsloth — Sam Witteveen</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=g68qlo9Izf0" target="_blank"><span class="res-icon">▶</span>LoRA Explained Simply — Yannic Kilcher</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w3">Day 20–21</div>
+            <div class="day-title">LLM Evaluation & Quality Assurance</div>
+            <ul class="day-tasks">
+              <li>RAGAS framework for RAG evaluation</li>
+              <li>LLM-as-judge evaluation patterns</li>
+              <li>Faithfulness, relevance, and groundedness metrics</li>
+              <li>Promptfoo and Langfuse for observability</li>
+              <li>Red-teaming and adversarial testing</li>
+              <li>Practice: Full evaluation suite for your RAG system</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://docs.ragas.io/en/stable/" target="_blank"><span class="res-icon">📄</span>RAGAS Documentation</a>
+                <a class="res-link free" href="https://langfuse.com/docs" target="_blank"><span class="res-icon">🆓</span>Langfuse LLM Observability Docs</a>
+                <a class="res-link free" href="https://www.promptfoo.dev/docs/intro/" target="_blank"><span class="res-icon">🆓</span>Promptfoo Evaluation Framework</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=Fr8pKmBNlkE" target="_blank"><span class="res-icon">▶</span>RAGAS — Evaluating RAG Pipelines Tutorial</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=g6jvjFLDWkE" target="_blank"><span class="res-icon">▶</span>LLM Evaluation with Langfuse — Langfuse Team</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=VF41iZgS0EE" target="_blank"><span class="res-icon">▶</span>LLM-as-Judge Evaluation — DeepLearning.AI</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="highlight-box ai-box" style="margin-top:24px">
+          <span class="emphasis">Week 3 Deliverable:</span> A DevOps-aware AI agent that can query your Kubernetes cluster + a fine-tuned model on HuggingFace Hub. These show you can bridge both worlds uniquely.
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== AI WEEK 4 ====== -->
+    <div class="week-block w4-block">
+      <div class="week-header">
+        <span class="week-number w4">04</span>
+        <div class="week-info">
+          <div class="week-label w4">Week 4 · Days 22–30</div>
+          <div class="week-title">Production AI Systems & Interview Preparation</div>
+          <div class="week-focus">vLLM · MLflow · Responsible AI · System Design · Portfolio</div>
+        </div>
+        <span class="week-tag tag-w4">Launch</span>
+      </div>
+      <div class="week-body">
+        <div class="days-grid">
+
+          <div class="day-card">
+            <div class="day-num w4">Day 22–24</div>
+            <div class="day-title">Production AI Inference & MLOps</div>
+            <ul class="day-tasks">
+              <li>vLLM for high-throughput LLM serving</li>
+              <li>Triton Inference Server for model optimization</li>
+              <li>Model quantization: GGUF, AWQ, GPTQ</li>
+              <li>MLflow for experiment tracking and model registry</li>
+              <li>A/B testing for LLM models in production</li>
+              <li>Cost optimization — token budgets, caching strategies</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link doc" href="https://docs.vllm.ai/en/latest/" target="_blank"><span class="res-icon">📄</span>vLLM Official Documentation</a>
+                <a class="res-link doc" href="https://mlflow.org/docs/latest/index.html" target="_blank"><span class="res-icon">📄</span>MLflow Documentation</a>
+                <a class="res-link free" href="https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html" target="_blank"><span class="res-icon">🆓</span>NVIDIA Triton Inference Server Docs</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=80bIUggRJf4" target="_blank"><span class="res-icon">▶</span>vLLM Explained — Efficient LLM Serving</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=Wyvr3R20yqw" target="_blank"><span class="res-icon">▶</span>LLM Quantization: GGUF, GPTQ, AWQ Explained</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=859OxXrt_TI" target="_blank"><span class="res-icon">▶</span>MLflow for ML Tracking — Krish Naik</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w4">Day 25–26</div>
+            <div class="day-title">Responsible AI & AI Safety</div>
+            <ul class="day-tasks">
+              <li>Bias detection and mitigation in LLMs</li>
+              <li>Guardrails with NeMo Guardrails or Llama Guard</li>
+              <li>GDPR / data compliance in AI systems</li>
+              <li>EU AI Act awareness (high-risk system categories)</li>
+              <li>AI security: prompt injection, model inversion, data poisoning</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Official Docs & Free Guides</div>
+              <div class="res-links">
+                <a class="res-link free" href="https://airc.nist.gov/Home" target="_blank"><span class="res-icon">🆓</span>NIST AI Risk Management Framework</a>
+                <a class="res-link free" href="https://developer.nvidia.com/nemo-guardrails" target="_blank"><span class="res-icon">🆓</span>NeMo Guardrails — NVIDIA</a>
+                <a class="res-link free" href="https://artificialintelligenceact.eu/the-act/" target="_blank"><span class="res-icon">🆓</span>EU AI Act — Plain English Summary</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=l-E2wZGAVIc" target="_blank"><span class="res-icon">▶</span>AI Safety Explained — Computerphile</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=ZSRHeXYDLko" target="_blank"><span class="res-icon">▶</span>Prompt Injection Attacks Explained — Simon Willison</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=a_kQ-6jTz9Q" target="_blank"><span class="res-icon">▶</span>EU AI Act for Engineers — TechWorld</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="day-card">
+            <div class="day-num w4">Day 27–30</div>
+            <div class="day-title">Interview Prep & Portfolio Launch</div>
+            <ul class="day-tasks">
+              <li>System design: scalable RAG for 100k users</li>
+              <li>System design: LLM fine-tuning pipeline end-to-end</li>
+              <li>STAR stories linking DevOps background to AI wins</li>
+              <li>Polish GitHub projects with architecture diagrams</li>
+              <li>Record a 3-min demo video of your best project</li>
+              <li>Apply to 10 target companies with tailored letters</li>
+            </ul>
+            <div class="day-resources">
+              <div class="res-group-label">📄 Free Interview Prep</div>
+              <div class="res-links">
+                <a class="res-link free" href="https://github.com/khangich/machine-learning-interview" target="_blank"><span class="res-icon">🆓</span>ML Interview Guide — GitHub (Free)</a>
+                <a class="res-link free" href="https://www.deeplearning.ai/short-courses/" target="_blank"><span class="res-icon">🆓</span>All DeepLearning.AI Short Courses (Free)</a>
+                <a class="res-link free" href="https://roadmap.sh/ai-engineer" target="_blank"><span class="res-icon">🆓</span>AI Engineer Roadmap 2026 — roadmap.sh</a>
+              </div>
+              <div class="res-divider"></div>
+              <div class="res-group-label">▶ YouTube</div>
+              <div class="res-links">
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=d0p0g-A9B2k" target="_blank"><span class="res-icon">▶</span>AI Engineer Interview Questions — Exponent</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=pX0WCnEz4P0" target="_blank"><span class="res-icon">▶</span>ML System Design Interview — ByteByteGo</a>
+                <a class="res-link yt" href="https://www.youtube.com/watch?v=uqMBhewRFbM" target="_blank"><span class="res-icon">▶</span>How I Got an AI Engineer Role in 2025 — Story</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="tools-section">
+      <div class="section-title ai-accent">Essential Tools & Tech Stack for 2026</div>
+      <div class="tools-categories">
+        <div class="tool-cat">
+          <div class="tool-cat-title ai-accent">LLM & Foundation Models</div>
+          <ul class="tool-list">
+            <li><span class="tool-dot" style="background:var(--ai)"></span>OpenAI GPT-4o, o3</li>
+            <li><span class="tool-dot" style="background:var(--ai)"></span>Anthropic Claude 3.5/4</li>
+            <li><span class="tool-dot" style="background:var(--ai)"></span>Google Gemini 2.x</li>
+            <li><span class="tool-dot" style="background:var(--ai)"></span>Meta Llama 3.x (local)</li>
+            <li><span class="tool-dot" style="background:var(--ai)"></span>Mistral / Mixtral</li>
+          </ul>
+        </div>
+        <div class="tool-cat">
+          <div class="tool-cat-title" style="color:#06b6d4">Orchestration & RAG</div>
+          <ul class="tool-list">
+            <li><span class="tool-dot" style="background:#06b6d4"></span>LangChain + LCEL</li>
+            <li><span class="tool-dot" style="background:#06b6d4"></span>LlamaIndex</li>
+            <li><span class="tool-dot" style="background:#06b6d4"></span>LangGraph</li>
+            <li><span class="tool-dot" style="background:#06b6d4"></span>Pinecone / Qdrant / Weaviate</li>
+            <li><span class="tool-dot" style="background:#06b6d4"></span>Pgvector</li>
+          </ul>
+        </div>
+        <div class="tool-cat">
+          <div class="tool-cat-title" style="color:#10b981">Training & Fine-tuning</div>
+          <ul class="tool-list">
+            <li><span class="tool-dot" style="background:#10b981"></span>HuggingFace Transformers</li>
+            <li><span class="tool-dot" style="background:#10b981"></span>PEFT (LoRA / QLoRA)</li>
+            <li><span class="tool-dot" style="background:#10b981"></span>Unsloth (fast fine-tuning)</li>
+            <li><span class="tool-dot" style="background:#10b981"></span>Axolotl</li>
+            <li><span class="tool-dot" style="background:#10b981"></span>TRL (RLHF training)</li>
+          </ul>
+        </div>
+        <div class="tool-cat">
+          <div class="tool-cat-title" style="color:var(--accent)">Production & Observability</div>
+          <ul class="tool-list">
+            <li><span class="tool-dot" style="background:var(--accent)"></span>vLLM</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>Langfuse (LLM observability)</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>MLflow / Weights & Biases</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>Promptfoo (evaluation)</li>
+            <li><span class="tool-dot" style="background:var(--accent)"></span>RAGAS</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="interview-section">
+      <div class="section-title ai-accent">Top AI Engineer Interview Questions 2026</div>
+      <div class="questions-grid">
+        <div class="question-card"><div class="q-category">System Design</div><div class="q-text">Design a scalable RAG system for a legal firm with 10M documents. How do you handle freshness, security, and latency requirements?</div></div>
+        <div class="question-card"><div class="q-category">Architecture</div><div class="q-text">When would you choose fine-tuning over RAG? What about a hybrid approach? Walk through the cost/quality trade-offs.</div></div>
+        <div class="question-card"><div class="q-category">Evaluation</div><div class="q-text">An LLM feature went to production and users are complaining about hallucinations. How do you diagnose, measure, and fix it?</div></div>
+        <div class="question-card"><div class="q-category">Agents</div><div class="q-text">Design a multi-agent system for automated code review. What are the failure modes and how would you prevent cascading errors?</div></div>
+        <div class="question-card"><div class="q-category">MLOps</div><div class="q-text">How would you deploy multiple LLMs to serve different customer tiers with different latency/cost profiles on the same infrastructure?</div></div>
+        <div class="question-card"><div class="q-category">Your Advantage</div><div class="q-text">How does your DevOps/infrastructure background make you a better AI Engineer? Give a concrete example from a project.</div></div>
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-title ai-accent">30-Day Completion Checklist</div>
+      <div class="check-grid">
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>LLM fundamentals — can explain attention mechanism</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>Streaming chatbot deployed with FastAPI</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>Production RAG system with hybrid search on GitHub</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>Vector DB comparison blog post or writeup</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>LangGraph agent with tool calling working</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>Fine-tuned model uploaded to HuggingFace Hub</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>RAGAS evaluation suite for your RAG project</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>vLLM serving a local model — demo video</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>System design answers for 4 AI scenarios</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>Langfuse observability on your RAG system</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>3 mock interviews completed</div>
+        <div class="check-item"><div class="check-box" onclick="toggleCheck(this,'ai')"></div>LinkedIn updated: RAG, LLMs, LangChain, Agents</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p style="margin-bottom:8px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--text)">30-Day Senior Career Accelerator · 2026 Edition</p>
+  <p>All resource links are free. YouTube channels featured: TechWorld with Nana · Andrej Karpathy · ByteByteGo · freeCodeCamp · DeepLearning.AI · Sam Witteveen · DevOps Toolkit</p>
+  <p style="margin-top:8px;color:#3d4156">Estimated total: 90–120 hours of focused study · 3–4 hours/day</p>
+</footer>
+
+<script>
+  function switchTab(role, btn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + role).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    setTimeout(animateBars, 50);
+  }
+
+  function toggleCheck(el, role) {
+    const cls = role === 'ai' ? 'checked-ai' : 'checked';
+    el.classList.toggle(cls);
+  }
+
+  function animateBars() {
+    document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+      const w = bar.style.width;
+      bar.style.width = '0%';
+      setTimeout(() => { bar.style.width = w; }, 100);
+    });
+  }
+
+  animateBars();
+</script>
+</body>
+</html>
